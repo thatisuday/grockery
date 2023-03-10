@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "orta.vscode-jest",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "kumar-harsh.graphql-for-vscode",
+    "editorconfig.editorconfig",
+    "bradlc.vscode-tailwindcss",
+    "streetsidesoftware.code-spell-checker",
+    "fabiospampinato.vscode-terminals"
+  ]
+}

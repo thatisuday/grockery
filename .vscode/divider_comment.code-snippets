@@ -1,0 +1,47 @@
+{
+  "divider_comment_title": {
+    "description": "Add a divider comment level 1.",
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "dc_t",
+    "body": [
+      "",
+      "/***************************************************",
+      " *                      $1                         *",
+      "***************************************************/",
+      "",
+      "",
+      "/**************************************************/",
+      ""
+    ]
+  },
+  "divider_comment_1": {
+    "description": "Add a divider comment level 1.",
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "dc_1",
+    "body": ["", "/**************************************************/", ""]
+  },
+  "divider_comment_2": {
+    "description": "Add a divider comment level 2.",
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "dc_2",
+    "body": ["", "/*--------------------------------------------------*/", ""]
+  },
+  "divider_comment_3": {
+    "description": "Add a divider comment level 3.",
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "dc_3",
+    "body": ["", "/*-------------------------*/", ""]
+  },
+  "divider_comment_4": {
+    "description": "Add a divider comment level 4.",
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "dc_4",
+    "body": ["", "/*---------------*/", ""]
+  },
+  "divider_comment_5": {
+    "description": "Add a divider comment level 5.",
+    "scope": "javascript,typescript,typescriptreact",
+    "prefix": "dc_5",
+    "body": ["", "/*---------*/", ""]
+  }
+}

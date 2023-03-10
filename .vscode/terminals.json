@@ -1,0 +1,27 @@
+{
+  "autorun": false,
+  "autokill": true,
+  "terminals": [
+    {
+      "name": "dev",
+      "description": "-> yarn dev",
+      "open": true,
+      "focus": true,
+      "commands": ["yarn dev"]
+    },
+    {
+      "name": "build",
+      "description": "-> yarn build",
+      "open": true,
+      "focus": true,
+      "commands": ["yarn build"]
+    },
+    {
+      "name": "start",
+      "description": "-> yarn start",
+      "open": true,
+      "focus": true,
+      "commands": ["yarn start"]
+    }
+  ]
+}
