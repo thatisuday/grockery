@@ -1,43 +1,34 @@
 import { ApolloServer, ApolloServerOptionsWithTypeDefs, BaseContext } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import { extend, map, reduce } from 'lodash';
-import {
-  entityToResolverDefinitions,
-  entityToGraphQLType,
-  entitiesToResolverImplementations,
-  yamlToJson,
-  initializeDatabaseEntities,
-} from './utils';
+import { Db } from './db';
+import { entityToResolverImplementations, yamlToJson, entitiesToGraphQLTypeDefinitions } from './utils';
 
-import { JsonDB, Config } from 'node-json-db';
-
+/**
+ * Start Grockery GraphQL server.
+ * @param param0
+ */
 export const start = async ({ yaml, port = 4200 }: { yaml: string; port?: number }) => {
-  const { db, entities } = yamlToJson(yaml);
-  const graphQLTypes = map(entities, (entity) => entityToGraphQLType(entity));
+  const { dbConfig, entities } = yamlToJson(yaml);
+  const typeDefs = entitiesToGraphQLTypeDefinitions(entities);
+  const db = await Db.getInstance(dbConfig.filepath);
 
-  const resolverDefinitions = map(entities, entityToResolverDefinitions);
-  const queries = map(resolverDefinitions, (resolverDefinition) => resolverDefinition.queries);
-  const mutations = map(resolverDefinitions, (resolverDefinition) => resolverDefinition.mutations);
+  // remove database
+  if (dbConfig.resetOnStart) {
+    await db.reset();
+  }
 
-  const typeDefs = `
-    ${graphQLTypes.join('\n')}
-
-    type Query {
-      ${queries.join('\n')}
-    }
-
-    type Mutation {
-      ${mutations.join('\n')}
-    }
-  `;
-
-  const resolverImplementations = map(entities, entitiesToResolverImplementations);
+  // get Apollo GraphQL resolvers
+  const resolverImplementations = await Promise.all(
+    map(entities, (entity) => entityToResolverImplementations(dbConfig, entity)),
+  );
   const queryImplementations = map(resolverImplementations, (resolverImplementation) => resolverImplementation.queries);
   const mutationImplementations = map(
     resolverImplementations,
     (resolverImplementation) => resolverImplementation.mutation,
   );
 
+  // create a single object of resolvers
   const queryResolvers = reduce(
     queryImplementations,
     extend,
@@ -55,11 +46,6 @@ export const start = async ({ yaml, port = 4200 }: { yaml: string; port?: number
         ...mutationResolvers,
       },
     },
-  });
-
-  await initializeDatabaseEntities({
-    dbConfig: db,
-    entities: entities,
   });
 
   const { url } = await startStandaloneServer(_server, { listen: { port } });

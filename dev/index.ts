@@ -1,4 +1,4 @@
-import { start } from '.';
+import { start } from '../src';
 import fs from 'fs';
 import path from 'path';
 

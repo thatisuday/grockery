@@ -1,7 +1,0 @@
-db:
-  filepath: mock.json
-  resetOnStart: true
-entities:
-  User:
-    name: String
-    age: Int

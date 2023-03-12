@@ -1,0 +1,11 @@
+dbConfig:
+  filepath: mock.json
+  resetOnStart: false
+entities:
+  User:
+    name: String!
+    age: Int
+  Machine:
+    name: String!
+    active: Boolean!
+    date: String

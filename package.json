@@ -7,7 +7,7 @@
   "author": "Uday Hiwarale <thatisuday@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --respawn src/__dev.ts",
+    "dev": "ts-node-dev dev/index.ts",
     "build": "tsc",
     "start": "node ./mock/server.js",
     "prepublish": "tsc",
@@ -33,6 +33,7 @@
     "graphql": "^16.6.0",
     "js-yaml": "^4.1.0",
     "lodash": "^4.17.21",
+    "lowdb": "^5.1.0",
     "node-json-db": "^2.1.4",
     "pluralize": "^8.0.0"
   }
