@@ -35,7 +35,7 @@ entities:
 #### Create mock-server.ts (or .js file)
 
 ```ts
-import { start } from '../src';
+import { start } from 'grockery';
 import fs from 'fs';
 import path from 'path';
 
