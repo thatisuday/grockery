@@ -93,6 +93,8 @@ export const entityToGraphQLType = (entity: TEntity): string => {
   const { typeFields, inputFields } = entityToGraphQLFields(entity);
 
   return `
+    scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
     # entity type
     type ${entity.entity} {
       ${typeFields}
