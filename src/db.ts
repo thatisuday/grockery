@@ -58,7 +58,9 @@ export class Db {
     const item = { ...data, id: faker.datatype.uuid() };
 
     json[entity].push(item);
-    await fs.writeJSON(this.filepath, json);
+    await fs.writeJSON(this.filepath, json, {
+      spaces: 2,
+    });
 
     return item;
   }
@@ -79,7 +81,9 @@ export class Db {
     }
 
     assign(item, data);
-    await fs.writeJSON(this.filepath, json);
+    await fs.writeJSON(this.filepath, json, {
+      spaces: 2,
+    });
 
     return item;
   }
@@ -98,7 +102,9 @@ export class Db {
       throw Error(`Cannot find ${entity} item with id ${id}.`);
     }
 
-    await fs.writeJSON(this.filepath, json);
+    await fs.writeJSON(this.filepath, json, {
+      spaces: 2,
+    });
     return items?.[0];
   }
 
