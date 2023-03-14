@@ -40,7 +40,7 @@ export const yamlToJson = (
     // append `id` property by default
     properties.push({
       propName: 'id',
-      propType: 'ID',
+      propType: 'ID!',
     });
 
     return {
